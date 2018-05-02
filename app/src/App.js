@@ -4,6 +4,7 @@ import './App.css';
 import styled from 'styled-components';
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
+import Header from './components/Header';
 
 const Title = styled.h1`
   text-transform: uppercase;
@@ -76,7 +77,7 @@ const BoxButtonSubmit = styled.div`
 const ButtonSubmit = styled.button`
   height: 2.1rem;
   width: 10rem;
-  background: green;
+  background-color: #73e878;
   border: none;
   color: #fff;
   text-transform: uppercase;
@@ -116,13 +117,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
         <Title>Dados pessoais</Title>
         <form onSubmit={this.handleSubmit}> 
           <ContainerInput>
