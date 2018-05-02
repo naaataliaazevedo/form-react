@@ -52,6 +52,15 @@ const BoxCheckboxes = styled.div`
   width: 100%;
   float: left;
 `;
+
+const ButtonSubmit = styled.button`
+  height: 2.1rem;
+  width: 10rem;
+  background: green;
+  border: none;
+  color: white;
+`;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -113,7 +122,7 @@ class App extends Component {
               <Checkbox value={'feminino'}>{'Feminino'}</Checkbox>
               <Checkbox value={'masculino'}>{'Masculino'}</Checkbox>
             </BoxCheckboxes>
-            <button type="submit">Continuar</button>
+            <ButtonSubmit type="submit">Continuar</ButtonSubmit>
           </ContainerInput>
         </form>
       </div>
