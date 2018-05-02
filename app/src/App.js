@@ -48,9 +48,24 @@ const LabelInput = styled.label`
   font-size: 12px;
 `;
 
+const LabelCheckbox = styled.label`
+  width: auto;
+  float: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.6rem 0;
+`;
+
 const BoxCheckboxes = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`;
+
+const BoxButtonSubmit = styled.div`
   width: 100%;
   float: left;
+  margin: 1rem 0;
 `;
 
 const ButtonSubmit = styled.button`
@@ -58,7 +73,9 @@ const ButtonSubmit = styled.button`
   width: 10rem;
   background: green;
   border: none;
-  color: white;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
 `;
 
 class App extends Component {
@@ -118,11 +135,14 @@ class App extends Component {
             </BoxInput>
 
             <BoxCheckboxes>
-              <label>Sexo</label>
+              <LabelCheckbox>Sexo</LabelCheckbox>
               <Checkbox value={'feminino'}>{'Feminino'}</Checkbox>
               <Checkbox value={'masculino'}>{'Masculino'}</Checkbox>
             </BoxCheckboxes>
-            <ButtonSubmit type="submit">Continuar</ButtonSubmit>
+            
+            <BoxButtonSubmit>
+              <ButtonSubmit type="submit">Continuar</ButtonSubmit>
+            </BoxButtonSubmit>
           </ContainerInput>
         </form>
       </div>

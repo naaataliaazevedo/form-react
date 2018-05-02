@@ -4,20 +4,16 @@ import styled from 'styled-components';
 
 const ContainerCheckbox = styled.div`
   margin: 4px;
-  background-color: #efefef;
-  border-radius: 4px;
-  border: 1px solid #d0d0d0;
+  border: 2px solid #000;
   // overflow: auto;
   float: left;
-  width: 48%;
+  width: 32.6%;
   &:hover {
     margin: 4px;
-    background-color: #efefef;
-    border-radius: 4px;
-    border: 1px solid red;
+    border: 1px solid blue;
     // overflow: auto;
     float: left;
-    color: red;
+    color: blue;
   }
   label {
     float: left;
@@ -27,13 +23,16 @@ const ContainerCheckbox = styled.div`
     text-align: center;
     padding: 3px 0px;
     display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
   }
   label input {
     position: absolute;
     top: -20px;
   }
   > input:checked + span {
-    background-color: #911;
+    background-color: blue;
     color: #fff;
   }
 `;
