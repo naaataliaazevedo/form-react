@@ -5,6 +5,11 @@ import styled from 'styled-components';
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 
+const Title = styled.h1`
+  text-transform: uppercase;
+  font-size: 26px;
+`;
+
 const ContainerInput = styled.div`
   @media (max-width: 600px) {
     width: 80%;
@@ -118,7 +123,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <h1>Dados pessoais</h1>
+        <Title>Dados pessoais</Title>
         <form onSubmit={this.handleSubmit}> 
           <ContainerInput>
             <BoxInput>
