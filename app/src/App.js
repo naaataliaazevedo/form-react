@@ -6,14 +6,37 @@ import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 
 const ContainerInput = styled.div`
+  @media (max-width: 600px) {
+    width: 80%;
+    margin: 0 auto;
+  }
   width: 60%;
   margin: 0 auto;
 `;
 
 const BoxInput = styled.div`
-  width: calc((100%/3) - 2rem);
-  float: left;
-  padding: 0rem 1rem;
+  @media (max-width: 600px) {
+    width: 100%;
+    float: left;
+  }
+  @media (min-width: 601px) {
+    width: calc((100% / 3) - 2rem);
+    padding: 0rem 1rem;
+    float: left;
+    &:nth-of-type(1n) {
+      &:after {
+        content: "-";
+        position: absolute;
+        top: 20.5rem;
+        left: 39.7%;
+      }
+    }
+    &:nth-of-type(2n) {
+      &:after {
+        left: 59.7%;
+      }
+    }
+  }
 `;
 
 const LabelInput = styled.label`
@@ -69,6 +92,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <h1>Dados pessoais</h1>
         <form onSubmit={this.handleSubmit}> 
           <ContainerInput>
             <BoxInput>
@@ -80,12 +104,12 @@ class App extends Component {
               <Input id={'data'} mask="99/99/9999" /*defaultValue={this.state.inputValue}*/ /*onChange={this.handleChange}*/ />
             </BoxInput>
             <BoxInput>
-              <label>Orgão expedidor</label>
+              <LabelInput>Orgão expedidor</LabelInput>
               <Input />
             </BoxInput>
 
             <BoxCheckboxes>
-              <LabelInput>Sexo</LabelInput>
+              <label>Sexo</label>
               <Checkbox value={'feminino'}>{'Feminino'}</Checkbox>
               <Checkbox value={'masculino'}>{'Masculino'}</Checkbox>
             </BoxCheckboxes>
