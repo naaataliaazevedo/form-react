@@ -8,6 +8,16 @@ const ContainerCheckbox = styled.div`
   // overflow: auto;
   float: left;
   width: 32.6%;
+  @media (min-width: 601px) {
+    &:nth-of-type(1n) {
+      &:after {
+        content: "-";
+        position: absolute;
+        top: 23.5rem;
+        left: 44.9%;
+      }
+    }
+  }
   &:hover {
     margin: 4px;
     border: 1px solid blue;
