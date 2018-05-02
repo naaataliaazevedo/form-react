@@ -10,7 +10,7 @@ export class Header extends React.Component {
   render() {
     return(
       <ContainerHeader>
-        <img src={logo} alt="Geru" style={{width: '130px', height: '76px', padding: '1rem 0'}} />
+        <img src={logo} alt="Geru" style={{width: '98px', height: '45px', padding: '1rem 0'}} />
       </ContainerHeader>
     );
   }

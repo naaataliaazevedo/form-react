@@ -36,6 +36,7 @@ const ContainerCheckbox = styled.div`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
+    background-color: #fff;
   }
   label input {
     position: absolute;
