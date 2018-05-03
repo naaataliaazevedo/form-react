@@ -48,13 +48,25 @@ const ContainerCheckbox = styled.div`
   }
 `;
 export class CheckBox extends React.Component {
+  onChange = (ev) => {
+    const { onChange } = this.props;
+
+    if (typeof onChange === 'function') {
+      onChange(ev);
+    }
+  };
+
   render() {
+    const { checked, name, value } = this.props;
     return(
       <ContainerCheckbox>
         <label>
           <input
             type="checkbox"
-            value={this.props.value}
+            name={name}
+            value={value}
+            onchange={this.onChange}
+            checked={checked}
           />
           <span>{this.props.children}</span>
         </label>

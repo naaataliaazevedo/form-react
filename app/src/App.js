@@ -88,15 +88,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      // inputValue: '',
+      hubspotSubscribe: true,
     };
   }
-
-  handleChange = (ev) => {
-    this.setState({
-      inputValue: ev.target.value,
-    });
-  };
 
   handleSubmit(event) {
     // const data = this.state;
@@ -113,7 +107,16 @@ class App extends Component {
     });*/
   }
 
+  handleCheckedStateChanged = (event) => {
+    console.log('ev', event);
+    this.setState({
+      hubspotSubscribe: event.target.checked,
+    });
+  };
+
   render() {
+    const { checkedValue } = this.state;
+    console.log('checkedValue', checkedValue);
     return (
       <div className="App">
         <Header />
@@ -135,8 +138,8 @@ class App extends Component {
 
             <BoxCheckboxes>
               <LabelCheckbox>Sexo</LabelCheckbox>
-              <Checkbox value={'feminino'}>{'Feminino'}</Checkbox>
-              <Checkbox value={'masculino'}>{'Masculino'}</Checkbox>
+              <Checkbox value={'feminino'} name={'feminino'} onChange={this.handleCheckedStateChanged}>{'Feminino'}</Checkbox>
+              <Checkbox value={'masculino'} name={'masculino'} onChange={this.handleCheckedStateChanged}>{'Masculino'}</Checkbox>
             </BoxCheckboxes>
             
             <BoxButtonSubmit>
