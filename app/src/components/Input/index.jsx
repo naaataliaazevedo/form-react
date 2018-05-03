@@ -11,6 +11,16 @@ const Inputs = styled.div`
     height: 1.4rem;
     float: left;
     border: 2px solid;
+    &:focus {
+      border-color: blue;
+      outline: none;
+    }
+  }
+  .active {
+    background-color: red;  
+  }
+  .inative {
+    background-color: yellow;
   }
 `;
 
@@ -26,33 +36,19 @@ export class Input extends React.Component {
     const { mask } = this.props;
     Inputmask(mask).mask(this._input);
   }
-    
-  onChange = (ev) => {
-    const { onChange } = this.props;
-    console.log('ev no input', ev.target);
-
-    this.setState({
-      inputValue: ev.target.value,
-    });
-
-    if (typeof onChange === 'function') {
-      onChange(ev.target.value);
-    }
-  };
 
   render() {
-    //const { inputValue } = this.state;
-    const { id, mask } = this.props;
+    const { id, mask, className } = this.props;
+    // console.log('className no input', className);
     return(
-      <Inputs>
+      <Inputs className={className}>
         <input
           type="text" 
           id={id}
           mask={mask}
-          //value={inputValue}
-          // onChange={this.onChange}
+          onChange={this.props.onChange}
           ref={(c) => (this._input = c)}
-          //onKeyPress={this.handleEnterKeyPress}
+          className={className}
         />
       </Inputs>
     );

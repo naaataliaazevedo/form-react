@@ -88,16 +88,43 @@ class App extends Component {
     super(props);
 
     this.state = {
-      hubspotSubscribe: true,
+      value: '',
+      valueStateRg: '',
+      valueStateData: '',
     };
+  }
+  
+  handleChange = (event) => {
+    const { valueStateRg, valueStateData } = this.state;
+    const valueTarget = event.target.value;
+    console.log(event.target.value);
+  
+    this.setState({
+      valueStateRg: valueTarget,
+      valueStateData: valueTarget
+    });
+  }
+  
+  onClick = (event) => {
+    const valueTarget = event.target.value;
+    console.log('event', event.target);
+    event.preventDefault();
+    console.log("event", event.target.value);
+      
+    this.setState({ 
+      value: valueTarget
+    });
   }
 
   handleSubmit(event) {
+    // const { valueStateRg, valueStateData } = this.state;
     // const data = this.state;
-    console.log('event', event);
-    const valueTarget = event.target[0].value;
+    // const valueRg = event.target[0].value;
+    // const valueData = event.target[1].value;
     event.preventDefault();
-    console.log('ev', valueTarget, event.target[0].id);
+    console.log('submit');
+    //console.log('ev', valueStateRg, valueStateData);
+    
     /*Object.values(data)[0].map((value) => {
       return value.name === valueTarget ?
       this.setState(prevState => ({
@@ -107,29 +134,32 @@ class App extends Component {
     });*/
   }
 
-  handleCheckedStateChanged = (event) => {
-    console.log('ev', event);
-    this.setState({
-      hubspotSubscribe: event.target.checked,
-    });
-  };
-
   render() {
-    const { checkedValue } = this.state;
-    console.log('checkedValue', checkedValue);
+    const { value, valueStateRg, valueStateData } = this.state;
+    console.log("value", value, valueStateRg, valueStateData);
+    const enabled = value !== '' && valueStateRg !== '' && valueStateData !== '';
     return (
       <div className="App">
-        <Header />
+       {/* <Header />*/}
         <Title>Dados pessoais</Title>
-        <form onSubmit={this.handleSubmit}> 
+        <form onSubmit={this.handleSubmit}>
           <ContainerInput>
             <BoxInput>
               <LabelInput>Número do Rg:</LabelInput>
-              <Input id={'rg'} mask="99.999.999-9" /*defaultValue={this.state.inputValue}*/ /*onChange={this.handleChange}*/ />
+              <Input
+                id={"rg"}
+                mask="99.999.999-9" 
+                onChange={this.handleChange}
+                className={valueStateRg !== '' ? 'active' : ''}
+              />
             </BoxInput>
             <BoxInput>
               <LabelInput>Data de emissão:</LabelInput>
-              <Input id={'data'} mask="99/99/9999" /*defaultValue={this.state.inputValue}*/ /*onChange={this.handleChange}*/ />
+              <Input
+                id={"data"}
+                mask="99/99/9999" 
+                onChange={this.handleChange}
+              />
             </BoxInput>
             <BoxInput>
               <LabelInput>Orgão expedidor</LabelInput>
@@ -138,12 +168,26 @@ class App extends Component {
 
             <BoxCheckboxes>
               <LabelCheckbox>Sexo</LabelCheckbox>
-              <Checkbox value={'feminino'} name={'feminino'} onChange={this.handleCheckedStateChanged}>{'Feminino'}</Checkbox>
-              <Checkbox value={'masculino'} name={'masculino'} onChange={this.handleCheckedStateChanged}>{'Masculino'}</Checkbox>
+              <Checkbox
+                value="feminino"
+                name={"feminino"}
+                onClick={event => this.onClick(event)}
+                className={value === 'feminino' ? 'active' : 'inative'}
+              >
+                {"Feminino"}
+              </Checkbox>
+              <Checkbox 
+                value={"masculino"} 
+                name={"masculino"}
+                onClick={event => this.onClick(event)}
+                className={value === 'masculino' ? 'active' : 'inative'} 
+              >
+                {"Masculino"}
+              </Checkbox>
             </BoxCheckboxes>
-            
+
             <BoxButtonSubmit>
-              <ButtonSubmit type="submit">Continuar</ButtonSubmit>
+              <ButtonSubmit disabled={!enabled} type="submit">Continuar</ButtonSubmit>
             </BoxButtonSubmit>
           </ContainerInput>
         </form>

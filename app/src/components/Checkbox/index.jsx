@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// http://jsfiddle.net/zAFND/6/
 
 const ContainerCheckbox = styled.div`
   margin: 4px;
@@ -20,7 +19,7 @@ const ContainerCheckbox = styled.div`
   }
   &:hover {
     margin: 4px;
-    border: 1px solid blue;
+    border: 2px solid blue;
     // overflow: auto;
     float: left;
     color: blue;
@@ -38,6 +37,9 @@ const ContainerCheckbox = styled.div`
     font-size: 12px;
     background-color: #fff;
   }
+  .active {
+    background-color: blue;
+  }
   label input {
     position: absolute;
     top: -20px;
@@ -48,16 +50,10 @@ const ContainerCheckbox = styled.div`
   }
 `;
 export class CheckBox extends React.Component {
-  onChange = (ev) => {
-    const { onChange } = this.props;
-
-    if (typeof onChange === 'function') {
-      onChange(ev);
-    }
-  };
 
   render() {
-    const { checked, name, value } = this.props;
+    const { checked, name, value, className } = this.props;
+    console.log('className checkbox', className);
     return(
       <ContainerCheckbox>
         <label>
@@ -65,10 +61,10 @@ export class CheckBox extends React.Component {
             type="checkbox"
             name={name}
             value={value}
-            onchange={this.onChange}
             checked={checked}
+            onClick={this.props.onClick}
           />
-          <span>{this.props.children}</span>
+          <span className={className}>{this.props.children}</span>
         </label>
       </ContainerCheckbox>
     );
