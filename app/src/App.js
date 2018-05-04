@@ -101,7 +101,6 @@ class App extends Component {
   }
   
   handleChange = (event) => {
-    const { valueStateRg, valueStateData, valueStateEmissor } = this.state;
     const valueTarget = event.target.value;
 
     this.setState({
@@ -129,7 +128,7 @@ class App extends Component {
   }
 
   render() {
-    const { value, valueStateRg, valueStateData, valueStateEmissor, data } = this.state;
+    const { value, valueStateRg, valueStateData, valueStateEmissor } = this.state;
     const enabled = value !== '' && valueStateRg !== '' && valueStateData !== '' && valueStateEmissor !== '';
     return (
       <div className="App">
