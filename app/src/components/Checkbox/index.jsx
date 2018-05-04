@@ -13,7 +13,7 @@ const ContainerCheckbox = styled.div`
         content: "-";
         position: absolute;
         top: 13.3rem;
-        left: 43.9%;
+        left: 47.1%;
       }
     }
   }
