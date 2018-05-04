@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 import Header from './components/Header';
+import Select from './components/Select';
 
 const Title = styled.h1`
   text-transform: uppercase;
@@ -32,7 +33,7 @@ const BoxInput = styled.div`
       &:after {
         content: "-";
         position: absolute;
-        top: 20.5rem;
+        top: 10.5rem;
         left: 39.7%;
       }
     }
@@ -63,7 +64,7 @@ const LabelCheckbox = styled.label`
 `;
 
 const BoxCheckboxes = styled.div`
-  width: 80%;
+  width: 50%;
   margin: 0 auto;
 `;
 
@@ -81,6 +82,9 @@ const ButtonSubmit = styled.button`
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
+  &:disabled {
+    background-color: #dfdfdf
+  }
 `;
 
 class App extends Component {
@@ -88,28 +92,28 @@ class App extends Component {
     super(props);
 
     this.state = {
+      data: {},
       value: '',
       valueStateRg: '',
       valueStateData: '',
+      valueStateEmissor: ''
     };
   }
   
   handleChange = (event) => {
-    const { valueStateRg, valueStateData } = this.state;
+    const { valueStateRg, valueStateData, valueStateEmissor } = this.state;
     const valueTarget = event.target.value;
-    console.log(event.target.value);
-  
+
     this.setState({
       valueStateRg: valueTarget,
-      valueStateData: valueTarget
+      valueStateData: valueTarget,
+      valueStateEmissor: valueTarget
     });
   }
   
   onClick = (event) => {
     const valueTarget = event.target.value;
-    console.log('event', event.target);
     event.preventDefault();
-    console.log("event", event.target.value);
       
     this.setState({ 
       value: valueTarget
@@ -117,30 +121,19 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    // const { valueStateRg, valueStateData } = this.state;
-    // const data = this.state;
-    // const valueRg = event.target[0].value;
-    // const valueData = event.target[1].value;
+    // const { valueStateRg, valueStateData, valueStateEmissor, value } = this.state;
+    // console.log('valores', value, valueStateRg, valueStateData, valueStateEmissor);
+
     event.preventDefault();
     console.log('submit');
-    //console.log('ev', valueStateRg, valueStateData);
-    
-    /*Object.values(data)[0].map((value) => {
-      return value.name === valueTarget ?
-      this.setState(prevState => ({
-        inputsValues: prevState.inputsValues.concat(valueTarget)
-      }))
-      : ''; 
-    });*/
   }
 
   render() {
-    const { value, valueStateRg, valueStateData } = this.state;
-    console.log("value", value, valueStateRg, valueStateData);
-    const enabled = value !== '' && valueStateRg !== '' && valueStateData !== '';
+    const { value, valueStateRg, valueStateData, valueStateEmissor, data } = this.state;
+    const enabled = value !== '' && valueStateRg !== '' && valueStateData !== '' && valueStateEmissor !== '';
     return (
       <div className="App">
-       {/* <Header />*/}
+        <Header />
         <Title>Dados pessoais</Title>
         <form onSubmit={this.handleSubmit}>
           <ContainerInput>
@@ -163,7 +156,7 @@ class App extends Component {
             </BoxInput>
             <BoxInput>
               <LabelInput>Orgão expedidor</LabelInput>
-              <Input />
+              <Select onChange={this.handleChange}/>
             </BoxInput>
 
             <BoxCheckboxes>

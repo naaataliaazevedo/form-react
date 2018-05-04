@@ -12,15 +12,15 @@ const Inputs = styled.div`
     float: left;
     border: 2px solid;
     &:focus {
-      border-color: blue;
+      border-color: #1b7d8e;
       outline: none;
     }
   }
   .active {
-    background-color: red;  
+    border-color: #1b7d8e;
   }
   .inative {
-    background-color: yellow;
+    border-color: red;
   }
 `;
 

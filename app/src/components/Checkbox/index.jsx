@@ -12,8 +12,8 @@ const ContainerCheckbox = styled.div`
       &:after {
         content: "-";
         position: absolute;
-        top: 23.5rem;
-        left: 44.9%;
+        top: 13.3rem;
+        left: 43.9%;
       }
     }
   }
@@ -38,7 +38,7 @@ const ContainerCheckbox = styled.div`
     background-color: #fff;
   }
   .active {
-    background-color: blue;
+    background-color: #1b7d8e;
   }
   label input {
     position: absolute;
